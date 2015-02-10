@@ -23,7 +23,7 @@ namespace b4ux1t3_Chat
             Setup();
 
             Thread receiveMessages = new Thread(new ThreadStart(ReceiveMessages));
-            Thread sendMessages = new
+            Thread sendMessages = new Thread(new ThreadStart(InputMessages));
         }
 
         /// <summary>
