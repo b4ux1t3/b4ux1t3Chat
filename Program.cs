@@ -32,26 +32,53 @@ namespace b4ux1t3_Chat
         private static void Setup()
         {
             Console.Clear();
+
+            // Get information from user: Name, IP, Port.
             Console.Write("What is your name? ");
             name = Console.ReadLine();
             Console.Write("IP Adress (Ask Chris): ");
             ip = Console.ReadLine();
             Console.Write("Port (Enter to leave default): ");
             string portString = Console.ReadLine();
+
+            // Default if no port was entered.
             if (portString != "")
             {
                 port = Convert.ToInt32(portString);
             }
+
+            // Confirm information
             string response = string.Empty;
             do
             {
                 Console.WriteLine("Is this correct (Yes or no?\nName: {0}\nIP: {1}\nPort: {2}", name, ip, portString);
                 response = Console.ReadLine();
             } while (response.ToLower() != "yes" && response.ToLower() != "no");
+            
+            // Check if user entered correct info.
             if (response.ToLower() == "no")
             {
                 Setup();
-            } 
+            }
+            
+            // Else, attempt to connect to ip:port
+            else
+            {
+                int attempts = 0;
+                while (!_clientSocket.Connected)
+                {
+                    try
+                    {
+                        attempts++;
+                        _connection.Connect(IPAddress.Parse(ip), port);
+                    }
+                    catch (SocketException)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Connection attempts: " + attempts.ToString());
+                    }
+                }
+            }
         }
 
         /// <summary>
