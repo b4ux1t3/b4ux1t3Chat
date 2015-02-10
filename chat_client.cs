@@ -9,7 +9,7 @@ using System.Net;
 
 namespace b4ux1t3_Chat
 {
-    class Program
+    class chat_client
     {
         private static Socket _connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static string ip = String.Empty;
