@@ -61,7 +61,7 @@ namespace b4ux1t3_Chat
             string response = string.Empty;
             do
             {
-                Console.WriteLine("Is this correct (Yes or no?\nName: {0}\nIP: {1}\nPort: {2}", name, ip, portString);
+                Console.WriteLine("Is this correct (Yes or no)?\nName: {0}\nIP: {1}\nPort: {2}", name, ip, portString);
                 response = Console.ReadLine();
             } while (response.ToLower() != "yes" && response.ToLower() != "no");
             
