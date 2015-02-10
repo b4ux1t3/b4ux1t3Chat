@@ -65,7 +65,7 @@ namespace b4ux1t3_Chat
             else
             {
                 int attempts = 0;
-                while (!_clientSocket.Connected)
+                while (!_connection.Connected)
                 {
                     try
                     {
