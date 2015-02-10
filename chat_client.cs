@@ -7,6 +7,15 @@ using System.Threading;
 using System.Net.Sockets;
 using System.Net;
 
+// b4ux1t3's Chat Client
+// Created by: Chris Pilcher (a.k.a. b4ux1t3)
+// Allows simple ASCII-encoded messages to be sent and received.
+// Future features:
+//  - Chat logs
+//  - Colors
+//  - GUI?
+// MIT License (See LICENSE.md)
+
 namespace b4ux1t3_Chat
 {
     class chat_client
@@ -22,6 +31,7 @@ namespace b4ux1t3_Chat
             Console.WriteLine("Entering setup. . .");
             Setup();
 
+            // Creating threads for sending and receiving messages.
             Thread receiveMessages = new Thread(new ThreadStart(ReceiveMessages));
             Thread sendMessages = new Thread(new ThreadStart(InputMessages));
         }
